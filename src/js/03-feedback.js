@@ -14,10 +14,15 @@ function getFormData(evt) {
 form.addEventListener('submit', saveData);
 function saveData(evt) {
   evt.preventDefault();
-  console.log(JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY)));
-  form.reset();
-  localStorage.removeItem(LOCALSTORAGE_KEY);
-  formData = {};
+  const formsValue = Object.values(formData);
+  if (formsValue.length !== 2) {
+    alert('Please fill both fields!');
+  } else {
+    console.log(JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY)));
+    form.reset();
+    localStorage.removeItem(LOCALSTORAGE_KEY);
+    formData = {};
+  }
 }
 
 function loadPage() {
