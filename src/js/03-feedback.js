@@ -15,7 +15,9 @@ form.addEventListener('submit', saveData);
 function saveData(evt) {
   evt.preventDefault();
   const formsValue = Object.values(formData);
-  if (formsValue.length !== 2) {
+  const isValuesEmpty = formsValue.some(value => value.length === 0);
+  // console.log(isValuesEmpty);
+  if (formsValue.length < 2 || isValuesEmpty) {
     alert('Please fill both fields!');
   } else {
     console.log(JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY)));
